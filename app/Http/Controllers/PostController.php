@@ -55,6 +55,19 @@ class PostController extends Controller
 
     return redirect('/')->with('success', 'Post updated successfully!');
 }
+
+// Show all posts
+public function index()
+{
+    $posts = Post::with('user')->latest()->get();
+    return view('posts.index', compact('posts'));
+}
+
+public function show(Post $post)
+{
+    return view('posts.show', compact('post'));
+}
+
 //delete post
 public function deletePost(Post $post)
 {

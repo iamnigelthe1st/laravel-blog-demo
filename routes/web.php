@@ -17,6 +17,8 @@ Route::post('/create-post', [PostController::class, 'createPost'])->middleware('
 Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen'])->middleware('auth');
 Route::put('/update-post/{post}', [PostController::class, 'actuallyUpdatePost'])->middleware('auth');
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost'])->middleware('auth');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 // Auth Routes
 Route::post('/register', [UserController::class, 'register'])->name('register');
